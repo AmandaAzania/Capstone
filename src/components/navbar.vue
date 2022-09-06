@@ -37,7 +37,7 @@
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end w-90">
                 <li class="nav-item">
-          <router-link to="/loginRegister">
+          <router-link to="/login">
             <button class="btn">
                 <i id="user" class="bi bi-person" style="font-size: 30px;"></i>
               </button>

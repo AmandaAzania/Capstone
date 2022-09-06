@@ -13,15 +13,6 @@ const routes = [
     component: () => import('../views/singleCategory.vue')
   },
 
-
-
-  {
-    path:'/loginRegister',
-    name: 'loginRegister',
-    component: () => import('../views/loginRegister.vue')
-  },
-
-  
   {
     path:'/admin',
     name: 'admin',
@@ -32,6 +23,12 @@ const routes = [
     path:'/singleProduct/:id',
     name:'singleProduct',
     component: () => import ('../views/singleProduct.vue'),
+    props: true
+  }, 
+  {
+    path:'/login',
+    name:'login',
+    component: () => import ('../views/login'),
     props: true
   }
 

@@ -46,8 +46,8 @@
         </div>
         
 <form action="/action_page.php">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
+  <label for="fname">sign up for our news letter:</label><br>
+  <input type="text" id="fname" name="fname" value="email"><br>
   <input type="submit" value="Submit">
 </form> 
       </div>
