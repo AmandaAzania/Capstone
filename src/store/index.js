@@ -26,7 +26,10 @@ export default createStore({
     },
     setJwt(state, jwt){
       state.jwt = jwt;
-    }
+    },
+    setCart(state, cart) {
+      state.cart = cart;
+    } 
   },
   actions: {
     async getProducts(context) {
@@ -49,7 +52,7 @@ async getProductByCat(context, catergory) {
 
 login: async (context, payload) => {
     console.log(payload);
-  fetch(`http://localhost:4000/login`, {
+  fetch(`https://laeta.herokuapp.com/login`, {
  
     method: "POST",
     body: JSON.stringify(payload),
@@ -59,16 +62,16 @@ login: async (context, payload) => {
   })
     .then((res) => res.json())
     .then((data) => {
-     
-      console.log(data);
-      alert(`Welcome, ${data.results[0].user_fullname}`)
+      let {results} = data;
+      context.commit('setUser', results[0]);
+      context.commit('setCart', results[0].cart);
 
     });
 },
 
 register: async (context, payload) => {
   const {user_fullname, email, password } = payload;
-  await fetch("http://localhost:4000/register", {
+  await fetch("https://laeta.herokuapp.com/register", {
     method: "POST",
     body: JSON.stringify({
       user_fullname: user_fullname,
@@ -84,10 +87,10 @@ register: async (context, payload) => {
   // router.push({ name: "login" });
 },
 
-getcart: async (context, id) => {
-  id = context.state.user.userID
+getcart: async (context, user_id) => {
+  id = context.state.user.user_id
   // console.log(id);
-  await fetch("http://localhost:4023/user/" + id + "/cart", {
+  await fetch("https://laeta.herokuapp.com/users" + user_id + "/cart", {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -105,9 +108,9 @@ getcart: async (context, id) => {
     });
 },
 addCart: async (context, item, id) => {
-  id = context.state.user.userID;
+  id = context.state.user.user_id;
   console.log(item);
-  await fetch("http://localhost:4023/user/" + id + "/cart", {
+  await fetch("https://laeta.herokuapp.com/users" + id + "/cart", {
       method: "POST",
       body: JSON.stringify(item),
       headers: {
@@ -122,8 +125,8 @@ addCart: async (context, item, id) => {
     });
 },
 clearCart: async (context, id) => {
-  id = context.state.user.userID;
-  await fetch("http://localhost:4023/user/" + id + "/cart", {
+  id = context.state.user.user_id;
+  await fetch("https://laeta.herokuapp.com/users" + id + "/cart", {
       method: "DELETE",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -137,10 +140,10 @@ clearCart: async (context, id) => {
     });
 },
 deleteCart: async (context, list, id) => {
-  id = context.state.user.userID;
+  id = context.state.user.user_id;
   console.log(list);
   await fetch(
-      "http://localhost:4023/user/" + id + "/cart/" + list.cart_id, {
+      "https://laeta.herokuapp.com/users" + id + "/cart/" + list.cart_id, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json; charset=UTF-8",

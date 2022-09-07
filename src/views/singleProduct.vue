@@ -11,6 +11,7 @@
    <p class="card-text">{{product.description}}</p>
    <p class="card-text">R{{product.price}}</p>
    <router-link to="/" class="btn btn-primary">Go Back</router-link>
+   <button @click="this.$store.dispatch('addCart',product[0])">Add to Cart</button>
  </div>
 </div>
    </div>
@@ -20,11 +21,16 @@
  </template>
 
 <script>
-   export default {
+    export default {
     props:['id'],
        mounted(){
            this.$store.dispatch('getProduct', this.id)
        },
+       methods : {
+            add(){
+                this.$store.dispatch('addCart',this.id)
+            }
+        },
        computed:{
            product(){
                return this.$store.state.product;
@@ -32,7 +38,3 @@
        }
    }
 </script>
-
-<style scoped>
-
-</style>

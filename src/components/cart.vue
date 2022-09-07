@@ -18,11 +18,11 @@
                     </div>
                     <div class="modal-body">
                         <div v-if="Cart">
-                            <div v-for="item in Cart" :key="item.productID" class="card">
-                                <img id="productimg" :src="item.Image" />
+                            <div v-for="item in Cart" :key="product.product_id" class="card">
+                                <img id="productimg" :src="product.imgURL" />
                                 <div class="card-body">
-                                    <h2>{{ item.Name }}</h2>
-                                    <p>{{ item.Information }}</p>
+                                    <h2>{{ product.tittle }}</h2>
+                                    <p>{{ product.description }}</p>
                                     <p id="price">Price: R{{ item.Price }}</p>
                                     <button @click="this.$store.dispatch('deleteCart', item)">Remove Product</button>
                                 </div>
