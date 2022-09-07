@@ -19,6 +19,8 @@ const routes = [
     component: () => import('../views/admin.vue')
   },
 
+
+
   {
     path:'/singleProduct/:id',
     name:'singleProduct',
@@ -29,6 +31,13 @@ const routes = [
     path:'/login',
     name:'login',
     component: () => import ('../views/login'),
+    props: true
+  },
+
+  {
+    path:'/register',
+    name:'register',
+    component: () => import ('../views/register'),
     props: true
   }
 
