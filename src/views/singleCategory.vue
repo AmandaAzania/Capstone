@@ -10,6 +10,7 @@
     <p class="card-text">{{product.description}}</p>
     <p class="card-text">R{{product.price}}</p>
     <router-link :to="{name: 'singleProduct', params:{id: product.product_Id}}" class="btn btn-primary">View</router-link>
+    <button @click="this.$store.dispatch('addCart',product[0])">Add to Cart</button>
   </div>
 </div>
     </div>

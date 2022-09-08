@@ -17,14 +17,14 @@
 
                     </div>
                     <div class="modal-body">
-                        <div v-if="Cart">
-                            <div v-for="item in Cart" :key="product.product_id" class="card">
+                        <div v-if="cart">
+                            <div v-for="product in cart" :key="product.product_Id" class="card">
                                 <img id="productimg" :src="product.imgURL" />
                                 <div class="card-body">
                                     <h2>{{ product.tittle }}</h2>
                                     <p>{{ product.description }}</p>
-                                    <p id="price">Price: R{{ item.Price }}</p>
-                                    <button @click="this.$store.dispatch('deleteCart', item)">Remove Product</button>
+                                    <p id="price">Price: R{{ product.price }}</p>
+                                    <button @click="deleteCartById(product.cart_id)">Remove Product</button>
                                 </div>
                                 <div class="card-footer">
                                     <button @click="this.$store.dispatch('clearCart')">Clear Cart</button>
@@ -53,12 +53,20 @@
 
 <script>
 export default {
-    props: ["cart"],
     computed: {
-        Cart() {
+        cart() {
             return this.$store.state.cart;
         },
+        user() {
+            return this.$store.state.user;
+        }
     },
+    methods: {
+        deleteCartById(id, list) {
+            this.$store.dispatch('deleteCart', id);
+            console.log(this.user);
+        }
+    }
 };
 
 </script>
