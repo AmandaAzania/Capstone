@@ -5,6 +5,7 @@
     <router-view />
     <cart/>
   </div>
+  <Contact/>
   <Footer/>
 </template>
 
@@ -15,10 +16,11 @@ import Infobanner from './components/infobanner.vue';
 import TopBanner from './components/topBanner.vue';
 import cart from './components/cart.vue';
 import modal from './components/ModalComponent.vue'
+import Contact from './views/contact.vue';
 
 
 export default {
-  components: { navbar, Footer, Infobanner, TopBanner, cart, modal },
+  components: { navbar, Footer, Infobanner, TopBanner, cart, modal, Contact },
   name: 'App',
 };
 </script>

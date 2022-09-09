@@ -1,7 +1,5 @@
 <template>
    
-
-
     <div class="container">
       <div class="row">
       
@@ -73,7 +71,7 @@
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                           <button type="button" class="btn btn-primary"
-                              @click="this.$store.dispatch('updateProduct', product)">Save changes</button>
+                              @click="this.$store.dispatch('update', product)">Save changes</button>
                       </div>
                   </div>
               </div>
@@ -98,11 +96,11 @@
   
       methods: {
           editProduct() {
-              return this.$store.dispatch("editProduct", this.product);
+              return this.$store.dispatch("update", this.product);
           },
           deleteProduct(id) {
               console.log("Product was deleted");
-              return this.$store.dispatch("deleteProduct", id);
+              return this.$store.dispatch("delete", id);
           }
       }
   
