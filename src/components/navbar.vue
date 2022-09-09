@@ -30,6 +30,7 @@
 </button>
         </li>
       </ul>
+      <h2 class="heading">Laeta</h2>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="search">
         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -59,6 +60,18 @@ export default {
   a:active {
   background-color: #34D399;
 }
+
+.navBar {
+  position: sticky;
+  top: 0;
+}
+
+.heading{
+  padding-right: 16em;
+  color: palevioletred;
+  font-weight: bold;
+}
+
 
 
 </style>
