@@ -18,7 +18,7 @@
           </h1>
           <h1 class="land">Just landed!!!</h1>
           <h4 class="inspire">.Inspired by all .Celebrating all</h4>
-          <button class="btn-grad">Shop the looks</button>
+         <router-link to="/allProducts"> <button class="btn-grad">Shop the looks</button></router-link>
         </div>
 
   
@@ -82,4 +82,11 @@ import Catergory from './catergory.vue';
     color: #fff;
     text-decoration: none;
   }
+
+  a:active {
+  background-color: #34D399;
+}
+a:hover{
+    text-decoration: none;
+}
   </style>

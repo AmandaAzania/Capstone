@@ -39,6 +39,13 @@ const routes = [
     name:'register',
     component: () => import ('../views/register'),
     props: true
+  },
+
+  {
+    path:'/allProducts',
+    name:'allProducts',
+    component: () => import ('../views/allProducts.vue'),
+    props: true
   }
 
 

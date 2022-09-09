@@ -1,11 +1,12 @@
 import { createStore } from 'vuex'
+import router from '@/router';
 
 export default createStore({
   state: {
     products: null,
     product: null,
     users: null,
-    user: null,
+    user: null || JSON.parse(localStorage.getItem('user')),
     jwt: null,
     cart : null,
     message: null
@@ -71,18 +72,16 @@ login: async (context, payload) => {
       context.commit('setUser', data.results[0]);
       console.log(context.state.user.user_id);
       context.dispatch('getcart', context.state.user.user_id);
+      setTimeout(()=>{
+        router.push('/allProducts'), 1000
+      });
     });
 },
 
 register: async (context, payload) => {
-  const {user_fullname, email, password } = payload;
   await fetch("https://laeta.herokuapp.com/register", {
     method: "POST",
-    body: JSON.stringify({
-      user_fullname: user_fullname,
-      email: email,
-      password: password,
-    }),
+    body: JSON.stringify(payload),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
