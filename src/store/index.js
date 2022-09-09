@@ -158,9 +158,35 @@ deleteCart: async (context, id) => {
       context.dispatch("getcart", user);
     });
 },
+update(context, payload) {
+  fetch(`https://laeta.herokuapp.com/products/`, {
+      method: 'PUT',
+      body: JSON.stringify(payload),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+      }
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+      context.dispatch('getProduct')
+    }) 
 },
-modules: {}
+
+delete :async (context, id)=> {
+ await fetch("https://laeta.herokuapp.com/products/" + id, {
+      method: 'DELETE',
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+      context.dispatch('getProduct');
+    }) 
+}
 
 },
+}
+
+
 
 )
