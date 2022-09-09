@@ -45,7 +45,8 @@
           </a>
         </div>
         
-<form action="/action_page.php">
+<form   action="https://formspree.io/f/mdojaonq"
+  method="POST">
   <label for="fname">sign up for our news letter:</label><br>
   <input type="text" id="fname" name="fname" value="email"><br>
   <input type="submit" value="Submit">
